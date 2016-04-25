@@ -155,6 +155,19 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
             view.getJumGerbong().setValue(k.getMaxGerbong());
             view.getRuteKereta().setSelectedItem(k.getRoute().toString());
         }
+        if (src.equals(view.getListPenumpang())){
+            int keretaterpilih = view.getListKereta().getSelectedIndex();
+            int pilih = view.getListPenumpang().getSelectedIndex();
+            
+            Kereta k = model.getKeretas().get(keretaterpilih);
+            Tiket t = k.daftarPenumpangList().get(pilih);
+            
+            view.getNamaPenumpang().setText("Nama Penumpang: "+t.getNamaPenumpang());
+            view.getIdPenumpang().setText("id Penumpang: "+t.getIdPenumpang());
+            view.getKontak().setText("Kontak: "+t.getKontak());
+            view.getTanggalPesan().setText("Tanggal Pesan: "+t.getTanggalPesan());
+            view.getHargaTiket().setText("Harga: Rp."+t.getHarga());
+        }
     }
     
 }

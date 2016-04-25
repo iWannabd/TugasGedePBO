@@ -40,12 +40,15 @@ public class ControllerMenuPemesanan extends MouseAdapter implements ActionListe
             List<Kereta> ks = model.getKeretas();
             int dipilih = view.getjList1().getSelectedIndex();
             Kereta k = ks.get(dipilih);
-            
-            Tiket t = new Tiket(view.getNama(),Integer.parseInt(view.getIdPenum()),view.getKontak(),new Date(),0);
+            Double harga = k.getRoute().getHarga();
+            Tiket t = new Tiket(view.getNama(),Integer.parseInt(view.getIdPenum()),view.getKontak(),new Date(),harga);
             
             k.addPenumpang(t);
             ks.set(dipilih, k);
+            view.gettFHarga().setText("Rp. "+harga);
             model.setKeretas(ks);
+            
+            
             try {
                 model.komit();
             } catch (IOException ex) {

@@ -241,4 +241,5 @@ public class Aplikasi {
         gson.toJson(keretas,os);
         os.close();
     }
+
 }

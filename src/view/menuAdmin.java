@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -59,6 +60,26 @@ public class menuAdmin extends javax.swing.JFrame {
      */
     public menuAdmin() {
         initComponents();
+    }
+
+    public JLabel getKontak() {
+        return Kontak;
+    }
+
+    public JLabel getHargaTiket() {
+        return hargaTiket;
+    }
+
+    public JLabel getIdPenumpang() {
+        return idPenumpang;
+    }
+
+    public JLabel getNamaPenumpang() {
+        return namaPenumpang;
+    }
+
+    public JLabel getTanggalPesan() {
+        return tanggalPesan;
     }
 
     /**

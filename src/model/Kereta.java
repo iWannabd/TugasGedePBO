@@ -66,7 +66,7 @@ public class Kereta {
         return false;
     }
     
-    private List<Gerbong> getGerbongs(){
+    public List<Gerbong> getGerbongs(){
         return gerbongs;
     }
     public void setRoute(Rute ru){
@@ -107,7 +107,7 @@ public class Kereta {
     @Override
     public String toString() {
         
-        return nama;
+        return nama+" ("+rute.getAwal().toString()+" - "+rute.getTujuan().toString()+")";
     }
     public String[] daftarPenumpang(){
         
@@ -122,6 +122,20 @@ public class Kereta {
         }
         return ret.toArray(new String[0]);
     }
+    public List<Tiket> daftarPenumpangList(){
+        
+        List<Tiket> ret = Collections.synchronizedList(new ArrayList<Tiket>());
+    
+        for (Gerbong gerbong : gerbongs) {
+            for (Tiket tiket : gerbong.getTickets()) {
+                if (tiket != null)
+                    ret.add(tiket);
+            }
+        }
+        return ret;
+    }
+    
+    
     
     
 }

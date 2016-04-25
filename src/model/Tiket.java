@@ -16,9 +16,9 @@ public class Tiket {
     private long idPenumpang;
     private String kontak;
     private Date tanggalPesan;
-    private int harga;
+    private double harga;
 
-    public Tiket(String namaPenumpang, long idPenumpang, String kontak, Date tanggalPesan, int harga) {
+    public Tiket(String namaPenumpang, long idPenumpang, String kontak, Date tanggalPesan, double harga) {
         this.namaPenumpang = namaPenumpang;
         this.idPenumpang = idPenumpang;
         this.kontak = kontak;
@@ -62,7 +62,7 @@ public class Tiket {
         return tanggalPesan;
     }
     
-    public int getHarga () {
+    public double getHarga () {
         return harga;
     }
 
