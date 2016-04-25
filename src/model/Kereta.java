@@ -99,8 +99,20 @@ public class Kereta {
 
     @Override
     public String toString() {
-//        return nama + "( "+rute.getAwal()+" - "+rute.getTujuan()+")";
+        
         return nama;
+    }
+    public String[] daftarPenumpang(){
+        
+        List<String> ret = Collections.synchronizedList(new ArrayList<String>());
+    
+        for (Gerbong gerbong : gerbongs) {
+            for (Tiket tiket : gerbong.getTickets()) {
+                ret.add(tiket.toString());
+            }
+            
+        }
+        return (String[]) ret.toArray();
     }
     
     
