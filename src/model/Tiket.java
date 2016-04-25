@@ -65,4 +65,10 @@ public class Tiket {
     public int getHarga () {
         return harga;
     }
+
+    @Override
+    public String toString() {
+        return namaPenumpang +" ("+idPenumpang+")";
+    }
+    
 }
