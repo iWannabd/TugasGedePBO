@@ -34,6 +34,7 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
         view.addAdapter(this);
         view.setDataStasiun(model.getStasiuns());
         view.setDataRute(model.getRutes());
+        view.setDataKereta(model.getKeretas());
     }
     
     @Override
@@ -100,6 +101,34 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
               }
               view.setDataRute(model.getRutes());
          }
+         if (src.equals(view.getBtnAdd2())){
+             List<Rute> r = model.getRutes();
+             Kereta k = new Kereta(view.getNamaKereta().getText(), (int) view.getJumGerbong().getValue(), r.get(view.getRuteKereta().getSelectedIndex()));
+              try {
+                  model.writeKeretas(k);
+              } catch (IOException ex) {
+                  Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              view.setDataKereta(model.getKeretas());
+         }
+         if (src.equals(view.getBtnDelete2())){
+            int dipilih = view.getListKereta().getSelectedIndex();
+              try {
+                  model.deleteKereta(dipilih);
+              } catch (IOException ex) {
+                  Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              view.setDataKereta(model.getKeretas());
+         }
+         if (src.equals(view.getBtnUpdate2())){
+            int dipilih = view.getListKereta().getSelectedIndex();
+            Kereta a = new Kereta(view.getNamaKereta().getText(), (int) view.getJumGerbong().getValue(), model.getRutes().get(view.getRuteKereta().getSelectedIndex()));
+              try {
+                  model.updateKereta(dipilih, a);
+              } catch (IOException ex) {
+                  Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+              }
+         }
     }
     
     public void mousePressed(MouseEvent e){
@@ -117,6 +146,14 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
             view.getBerangkat().setValue((Date)r.getBerangkat());
             view.getTiba().setValue((Date)r.getTiba());
             view.getHarga().setText(""+r.getHarga());
+        }
+        if (src.equals(view.getListKereta())){
+            int dipilih = view.getListKereta().getSelectedIndex();
+            Kereta k = model.getKeretas().get(dipilih);
+            view.getListPenumpang().setListData(k.daftarPenumpang());
+            view.getNamaKereta().setText(k.getNama());
+            view.getJumGerbong().setValue(k.getMaxGerbong());
+            view.getRuteKereta().setSelectedItem(k.getRoute().toString());
         }
     }
     

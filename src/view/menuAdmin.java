@@ -14,8 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import model.Rute;
-import model.Stasiun;
+import model.*;
 
 /**
  *
@@ -572,8 +571,17 @@ public class menuAdmin extends javax.swing.JFrame {
             val[j] = rutes.get(j).toString();
         }
         listRute.setListData(val);
+        ruteKereta.setModel(new DefaultComboBoxModel<>(val));
     }
 
+    public void setDataKereta(List<Kereta> keretas){
+        String[] val = new String[keretas.size()];
+        for (int i = 0; i < keretas.size(); i++) {
+            val[i] = keretas.get(i).toString();
+        }
+        listKereta.setListData(val);
+    }
+    
     public JButton getBtnAdd() {
         return btnAdd;
     }

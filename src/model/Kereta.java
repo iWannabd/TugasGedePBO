@@ -24,6 +24,13 @@ public class Kereta {
         maxGerbong = maxGer;
         gerbongs = Collections.synchronizedList(new ArrayList<Gerbong>());
     }
+
+    public Kereta(String nama, int maxGerbong, Rute rute) {
+        this.nama = nama;
+        this.maxGerbong = maxGerbong;
+        this.rute = rute;
+        gerbongs = Collections.synchronizedList(new ArrayList<Gerbong>());
+    }
     
     public boolean addGerbong(Gerbong g){
         if (gerbongs.size()<getMaxGerbong()) {
@@ -108,11 +115,12 @@ public class Kereta {
     
         for (Gerbong gerbong : gerbongs) {
             for (Tiket tiket : gerbong.getTickets()) {
-                ret.add(tiket.toString());
+                if (tiket != null)
+                    ret.add(tiket.toString());
             }
             
         }
-        return (String[]) ret.toArray();
+        return ret.toArray(new String[0]);
     }
     
     

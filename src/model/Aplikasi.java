@@ -224,4 +224,21 @@ public class Aplikasi {
         os.close();
     }
     
+    public void updateKereta(int pos, Kereta k) throws IOException{
+        Gson gson = new Gson();
+        Writer os = new OutputStreamWriter(new FileOutputStream(keretajsonfile));
+        keretas.set(pos, k);
+        
+        gson.toJson(keretas,os);
+        os.close();
+    }
+    
+    public void deleteKereta(int pos) throws IOException{
+        Gson gson = new Gson();
+        Writer os = new OutputStreamWriter(new FileOutputStream(keretajsonfile));
+        keretas.remove(pos);
+        
+        gson.toJson(keretas,os);
+        os.close();
+    }
 }
