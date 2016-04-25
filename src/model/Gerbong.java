@@ -14,7 +14,12 @@ import java.util.ArrayList;
 public class Gerbong {
     private int maxPenumpang;
     private int i = 0;
+
+    
     private Tiket[] tickets;
+    public Tiket[] getTickets() {
+        return tickets;
+    }
 
     public Gerbong() {
         this.maxPenumpang = 20;
