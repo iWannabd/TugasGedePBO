@@ -116,11 +116,10 @@ public class TugasGedePBO {
 //            Gson g = new GsonBuilder().setPrettyPrinting().create();
 //            System.out.println(g.toJson(k));
           
-Aplikasi app = new Aplikasi();
-new Controller.ControllerMenuPemesanan(app);
-//Rute r = new Rute(new Stasiun("a", "a"),new Stasiun("b", "b"),new Date(),new Date());
-//app.writeRutes(r);
-
+//Aplikasi app = new Aplikasi();
+//new Controller.ControllerMenuPemesanan(app);
+    Console c = new Console();
+    c.mainMenu();
 
 
     
